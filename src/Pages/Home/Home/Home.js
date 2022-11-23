@@ -1,9 +1,11 @@
 import React from 'react';
+import HomeBenar from '../HomeBennar/HomeBennar';
+
 
 const Home = () => {
     return (
-        <div>
-                 <h1 className='text-2xl'> Home page site </h1>
+        <div className='mx-5'>
+             <HomeBenar></HomeBenar>
         </div>
     );
 };
