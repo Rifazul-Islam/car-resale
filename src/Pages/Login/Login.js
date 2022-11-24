@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
     const {register, formState: { errors }, handleSubmit} = useForm()
@@ -11,7 +12,7 @@ const Login = () => {
       }
       
     return (
-        <div className='h-[800px]  flex justify-center items-center'>
+        <div className='h-[600px]   flex justify-center items-center'>
                  <div className='w-96 border-2  p-10'>
                  <h2 className='text-2xl text-center'> Login Page </h2>
 
@@ -47,13 +48,13 @@ const Login = () => {
   </label>
          <p className='text-red-600' >  </p>
    </div>
-      <input type="submit" className='btn btn-neutral w-full mt-3' value="Login" />
+      <input type="submit" className='btn  w-full border-none hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-indigo-500 text-white mt-3' value="Login" />
     </form>
 
-          <p className='mt-3 mb-4'> New go to  <Link to='/signup' className='text-secondary' > Create New Accout</Link> </p>
+          <p className='mt-3 mb-4'> New go to  <Link to='/signup' className='text-green-500' > Create New Accout</Link> </p>
     
           
-            <button  className='btn btn-outline btn-primary w-full'>  CONTINUE WITH GOOGLE</button>
+            <button  className='btn btn-outline btn-primary w-full'><FaGoogle className='mr-3' />    CONTINUE WITH GOOGLE</button>
         </div>  
         </div>
     );

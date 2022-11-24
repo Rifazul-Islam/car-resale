@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
@@ -11,7 +12,7 @@ const Signup = () => {
       }
       
     return (
-        <div className='h-[700px] flex justify-center items-center'>
+        <div className='h-[650px] flex justify-center items-center'>
         <div className='w-96 border border-indigo-600  p-7'>
               <h2 className='text-2xl text-center'> Sign up  page</h2>
 
@@ -52,7 +53,7 @@ const Signup = () => {
               <span className="label-text text-1xl">Select</span>
               </label>
               <select type='text' {...register("select" ,{required:true} )} className="select select-bordered w-full max-w-xs">
-              <option >user</option>
+              <option>user</option>
                  <option>Greedo</option>
         </select>
               
@@ -61,14 +62,14 @@ const Signup = () => {
 
         </div>
                <p className='text-red-500'>  </p>
-        <input type="submit" className='btn btn-neutral w-full mt-2' value="Sign up" />
+        <input type="submit" className='btn w-full border-none hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-indigo-500 text-white my-3' value="Sign up" />
         </form>
 
-            <p className='mt-3 mb-5'> Already have an Accout <Link to='/login' className='text-secondary' > Login page</Link> </p>
+            <p className='mt-3 mb-5'> Already have an Accout <Link to='/login' className='text-green-500' > Login page</Link> </p>
   
           
     
-      <button className='btn btn-outline w-full'>  CONTINUE WITH GOOGLE</button>
+      <button className='btn btn-outline w-full'> <FaGoogle className='mr-3' />   CONTINUE WITH GOOGLE</button>
   </div>  
   </div>
     );
