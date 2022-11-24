@@ -15,8 +15,8 @@ const Navber = () => {
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
            
             <li><Link to="/">Home</Link></li>
-           <li><Link to="/about">Login</Link></li>
-            <li><Link to="/appointment">Blog</Link></li>
+           <li><Link to="/login">Login</Link></li>
+            <li><Link>Blog</Link></li>
            
             </ul>
           </div>
@@ -27,7 +27,7 @@ const Navber = () => {
           <ul className="menu menu-horizontal p-0  ">
             
           <li><Link to="/">Home</Link></li>
-        <li><Link >Login</Link></li>
+        <li><Link to="/login" >Login</Link></li>
          <li><Link >Blog</Link></li>
           </ul>
         </div>
