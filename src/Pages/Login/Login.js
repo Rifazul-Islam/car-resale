@@ -1,14 +1,37 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
     const {register, formState: { errors }, handleSubmit} = useForm()
     // const [loginError, setLoginError] = useState('')
+
+      const {userLogin ,userGoogleLogin} = useContext(AuthContext)
       const handlarLogin = (data)=>{
 
-              console.log(data)
+        userLogin(data.email, data.password)
+        .then((result)=> {
+           const user = result.user;
+           console.log(user)
+        })
+         .catch((error)=>{
+            console.error(error)
+         })
+      }
+
+
+      const handlarGoogleLoing = () =>{
+
+        userGoogleLogin()
+        .then(result => {
+          const user = result.user;
+          console.log(user)
+        })
+        .catch(error =>{
+              console.error(error)
+        })
       }
       
     return (
@@ -54,7 +77,7 @@ const Login = () => {
           <p className='mt-3 mb-4'> New go to  <Link to='/signup' className='text-green-500' > Create New Accout</Link> </p>
     
           
-            <button  className='btn btn-outline btn-primary w-full'><FaGoogle className='mr-3' />    CONTINUE WITH GOOGLE</button>
+            <button onClick={handlarGoogleLoing}  className='btn btn-outline btn-primary w-full'><FaGoogle className='mr-3' />    CONTINUE WITH GOOGLE</button>
         </div>  
         </div>
     );
