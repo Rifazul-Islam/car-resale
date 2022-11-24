@@ -1,11 +1,17 @@
 import React from 'react';
-import HomeBenar from '../HomeBennar/HomeBennar';
+import ExtraSection from '../ExtraSection/ExtraSection';
+import HomeBennar from '../HomeBennar/HomeBennar';
+
+
 
 
 const Home = () => {
     return (
         <div className='mx-5'>
-             <HomeBenar></HomeBenar>
+             
+             <HomeBennar></HomeBennar>
+             <ExtraSection></ExtraSection>
+           
         </div>
     );
 };
