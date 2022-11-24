@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const {register, formState: { errors }, handleSubmit} = useForm()
@@ -15,6 +16,7 @@ const Login = () => {
         .then((result)=> {
            const user = result.user;
            console.log(user)
+           toast.success('User Login Succussfully')
         })
          .catch((error)=>{
             console.error(error)

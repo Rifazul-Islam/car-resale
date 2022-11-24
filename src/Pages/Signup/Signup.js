@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -14,6 +15,7 @@ const Signup = () => {
         createUser(data.email, data.password)
         .then((result)=>{
              const user = result.user;
+             toast.success('Create User Succussfully')
              const userProfile = {
               displayName:data.name
              }
