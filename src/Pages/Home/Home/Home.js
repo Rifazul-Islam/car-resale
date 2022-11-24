@@ -8,7 +8,7 @@ import HomeBennar from '../HomeBennar/HomeBennar';
 const Home = () => {
     return (
         <div className='mx-5'>
-             
+            
              <HomeBennar></HomeBennar>
              <ExtraSection></ExtraSection>
            
