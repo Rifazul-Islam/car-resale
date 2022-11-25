@@ -4,12 +4,15 @@ import Blog from "../Pages/Blog/Blog";
 import Category from "../Pages/Home/Category/Category";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
+import ErrorCheck from "../Pages/Shared/ErrorCheck/ErrorCheck";
 import Signup from "../Pages/Signup/Signup";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
 
 
 export const router = createBrowserRouter([
-     {path:'/', element: <Main></Main>, children:[ 
+     {path:'/', element: <Main></Main>, 
+     errorElement:<ErrorCheck></ErrorCheck>, 
+     children:[ 
         {path:'/', element:<Home></Home> },
         {path:'/login', element:<Login></Login>},
         {path:'/signup', element:<Signup></Signup>},

@@ -39,7 +39,7 @@ const Navber = () => {
           <ul className="menu menu-horizontal p-0  ">
             
           <li><Link to="/">Home</Link></li>
-        {user?.uid? <button onClick={handlarUserLogout} >Sign out</button> : <li><Link to="/login" >Login</Link></li>}
+        {user?.uid? <button onClick={handlarUserLogout}>Sign out</button> : <li><Link to="/login" >Login</Link></li>}
          <li><Link to='/blog'>Blog</Link></li>
           </ul>
         </div>
