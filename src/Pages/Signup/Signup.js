@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -21,11 +22,37 @@ const Signup = () => {
              }
              updateUserProfile(userProfile)
              console.log(user)
+
+             
         })
         .catch((error)=>{
           console.error(error)
         })
              
+      const  user ={
+          name:data.name,
+          email:data.email,
+          role : data.select
+        }
+        
+         fetch('http://localhost:5000/users',{
+
+          method: 'POST',
+          headers:{
+              'content-type':'application/json'
+          },
+        body:JSON.stringify(user)
+         })
+         .then(res => res.json() )
+         .then(data => {
+             
+            if(data.acknowledged){
+
+                toast.success('user Info database Save')
+            }
+             
+         })
+      
       }
 
       const handlarGoogleLoing = () =>{
@@ -35,10 +62,12 @@ const Signup = () => {
           const user = result.user;
           console.log(user)
         })
-        .catch(error =>{
+        .catch(error =>{ 
               console.error(error)
         })
       }
+
+        
 
 
       
@@ -84,22 +113,18 @@ const Signup = () => {
               <span className="label-text text-1xl">Select</span>
               </label>
               <select type='text' {...register("select" ,{required:true} )} className="select select-bordered w-full max-w-xs">
-              <option>seller option</option>
-                 <option>narmal User</option>
-        </select>
+              <option>Seller </option>
+              <option>Buyers</option>
+           </select>
               
-               </div>
-
-
+          </div>
         </div>
-               <p className='text-red-500'>  </p>
+        <p className='text-red-500'>  </p>
         <input type="submit" className='btn w-full border-none hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-indigo-500 text-white my-3' value="Sign up" />
         </form>
-
-            <p className='mt-3 mb-5'> Already have an Accout <Link to='/login' className='text-green-500' > Login page</Link> </p>
   
-          
-    
+        <p className='mt-3 mb-5'> Already have an Accout <Link to='/login' className='text-green-500' > Login page</Link> </p>
+
       <button onClick={handlarGoogleLoing} className='btn btn-outline w-full'> <FaGoogle className='mr-3' />   CONTINUE WITH GOOGLE</button>
   </div>  
   </div>

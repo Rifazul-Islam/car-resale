@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CategoriCard = ({product}) => {
       const {img,name,category,_id}=product
+      
     return (
         <div className='   '>
          <div className="card card-compact h-[400px]   w-80 bg-base-200 shadow-xl">
