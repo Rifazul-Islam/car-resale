@@ -28,7 +28,7 @@ const Navber = () => {
            
             <li><Link to="/">Home</Link></li>
            <li><Link to="/login">Login</Link></li>
-            <li><Link>Blog</Link></li>
+            <li><Link to='/blog' >Blog</Link></li>
            
             </ul>
           </div>
@@ -40,7 +40,7 @@ const Navber = () => {
             
           <li><Link to="/">Home</Link></li>
         {user?.uid? <button onClick={handlarUserLogout} >Sign out</button> : <li><Link to="/login" >Login</Link></li>}
-         <li><Link >Blog</Link></li>
+         <li><Link to='/blog'>Blog</Link></li>
           </ul>
         </div>
        
