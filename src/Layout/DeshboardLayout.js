@@ -8,7 +8,7 @@ import Navber from '../Pages/Shared/Navber/Navber';
 
 const DeshboardLayout = () => {
 
-      const {user} = useContext(AuthContext)
+      const {user,loding} = useContext(AuthContext)
       const [isBuyer] = useBuyer(user?.email)
       const [isSeller] = useSeller(user?.email)
     return (
@@ -27,7 +27,7 @@ const DeshboardLayout = () => {
     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
       
       {
-          isBuyer && <li><Link to='/deshboard/myOrders' > My Orders</Link></li>
+          isBuyer &&   <li><Link to='/deshboard/myOrders' > My Orders</Link></li>
       }
 
          {

@@ -1,17 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../CustomHook/useToken';
 
 const Signup = () => {
     const {register, formState: { errors }, handleSubmit} = useForm()
     // const [loginError, setLoginError] = useState('')
       
     const {createUser,updateUserProfile,userGoogleLogin}=useContext(AuthContext)
-      const hanlarSinup = (data)=>{
+        
+    const [userEmail, setUserEmail] = useState('')
+         const [token]=useToken(userEmail)
+    
+         const navigate = useNavigate()
+
+         if(token){
+           navigate('/')
+         }
+        
+
+
+    const hanlarSinup = (data)=>{
            
         createUser(data.email, data.password)
         .then((result)=>{
@@ -23,7 +36,7 @@ const Signup = () => {
              updateUserProfile(userProfile)
              console.log(user)
 
-             
+               setUserEmail(data.email)
         })
         .catch((error)=>{
           console.error(error)
@@ -115,6 +128,7 @@ const Signup = () => {
               <select type='text' {...register("select" ,{required:true} )} className="select select-bordered w-full max-w-xs">
               <option>seller </option>
               <option>buyer</option>
+              <option>admin</option>
            </select>
               
           </div>

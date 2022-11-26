@@ -7,7 +7,18 @@ const AddProduct = () => {
   
      const handlarAdProduct = (data)=>{
 
-         console.log(data)
+           const addproducts = {
+             
+                  ProductName:data.name,
+                  price : data.price,
+                  select: data.select,
+                  location : data.location,
+                   year : data.year,
+                   phone:data.phone,
+                   decripe:data.decripe
+           }
+
+           console.log(addproducts)
      }
 
     return (
