@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import DeshboardLayout from "../Layout/DeshboardLayout";
 import Main from "../Layout/Main";
 import Blog from "../Pages/Blog/Blog";
+import Deshboard from "../Pages/Deshboard/Deshboard/Deshboard";
+import MyOrders from "../Pages/Deshboard/MyOrders/MyOrders";
 import Category from "../Pages/Home/Category/Category";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -23,5 +26,10 @@ export const router = createBrowserRouter([
 
         {path:'/blog',element:<Blog></Blog>}
 
+     ] },
+
+     {path:'/deshboard', element:<PrivateRouter> <DeshboardLayout></DeshboardLayout></PrivateRouter>, children:[
+     {path:'/deshboard', element:<Deshboard></Deshboard>},
+     {path:'/deshboard/myOrders', element: <MyOrders> </MyOrders> },
      ] }
 ])

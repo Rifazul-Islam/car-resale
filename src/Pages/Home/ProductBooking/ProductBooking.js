@@ -6,7 +6,7 @@ const ProductBooking = ({productAllData,cancalModal}) => {
      
     const {user} = useContext(AuthContext)
 
-    const {name:categorName,resalePrice} = productAllData
+    const {name:categorName,resalePrice, img} = productAllData
           
    
     
@@ -32,7 +32,8 @@ const ProductBooking = ({productAllData,cancalModal}) => {
         name,
         email,
         phone,
-        location
+        location,
+        img
       }
 
       console.log(booking)

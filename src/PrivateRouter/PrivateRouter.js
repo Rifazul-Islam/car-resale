@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
+import SpennerPage from '../Pages/Shared/SpennerPage/SpennerPage';
 
 const PrivateRouter = ({children}) => {
     const {user , loding} = useContext(AuthContext)
@@ -8,7 +9,7 @@ const PrivateRouter = ({children}) => {
       
     if(loding){
 
-           return <div> Loading ...</div>
+           return <div> <SpennerPage/></div>
     }
 
        if(user){
