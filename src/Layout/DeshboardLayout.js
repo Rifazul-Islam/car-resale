@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import useBuyer from '../CustomHook/useBuyer';
+import useSeller from '../CustomHook/useSeller';
 import Footer from '../Pages/Shared/Navber/Footer/Footer';
 import Navber from '../Pages/Shared/Navber/Navber';
 
@@ -9,6 +10,7 @@ const DeshboardLayout = () => {
 
       const {user} = useContext(AuthContext)
       const [isBuyer] = useBuyer(user?.email)
+      const [isSeller] = useSeller(user?.email)
     return (
     <div >
      <Navber></Navber>
@@ -28,7 +30,11 @@ const DeshboardLayout = () => {
           isBuyer && <li><Link to='/deshboard/myOrders' > My Orders</Link></li>
       }
 
-      <li><Link>Sidebar Item 2</Link></li>
+         {
+          isSeller && <> <li><Link to='/deshboard/addProduct' > Add Product</Link></li>
+                       <li><Link to='/deshboard/myProduct' > my Product</Link></li></>
+         }
+           
     </ul>
   
   </div>
