@@ -6,6 +6,7 @@ import AddProduct from "../Pages/Deshboard/AddProduct/AddProduct";
 import Deshboard from "../Pages/Deshboard/Deshboard/Deshboard";
 import MyOrders from "../Pages/Deshboard/MyOrders/MyOrders";
 import MyProduct from "../Pages/Deshboard/MyProduct/MyProduct";
+import Payments from "../Pages/Deshboard/Payments/Payments";
 import Category from "../Pages/Home/Category/Category";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -26,6 +27,8 @@ export const router = createBrowserRouter([
         loader:({params})=> fetch(`http://localhost:5000/categories/${params.id}`)
       },
 
+       
+
         {path:'/blog',element:<Blog></Blog>}
 
      ] },
@@ -35,5 +38,10 @@ export const router = createBrowserRouter([
      {path:'/deshboard/myOrders', element: <MyOrders> </MyOrders>  },
      {path:'/deshboard/addProduct', element:<PrivateRouter> <AddProduct></AddProduct>  </PrivateRouter>   },
      {path:'/deshboard/myProduct', element: <PrivateRouter> <MyProduct></MyProduct>   </PrivateRouter>   },
-     ] }
+     
+     {path:'/deshboard/payments/:id', element:<Payments></Payments>,
+     
+     loader:({params})=> fetch(`http://localhost:5000/bookings/${params.id}`)  
+    }
+    ] }
 ])

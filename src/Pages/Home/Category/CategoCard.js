@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 
 import { BiCheck } from "react-icons/bi";
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useSeller from '../../../CustomHook/useSeller';
 
 const CategoCard = ({secondhand,setProductAllData}) => {
    
       const {user} = useContext(AuthContext)
+         const [isSeller]=useSeller(user?.email)
     const {img,name,Locatin,resalePrice,originalPrice,years,} = secondhand
 
 
@@ -23,7 +25,7 @@ const CategoCard = ({secondhand,setProductAllData}) => {
       
         <div className=' '>
         <p className='ml-7 font-bold flex justify-around' > Seller Name :  { user?.uid? <>{user?.displayName} 
-        <p className='ml-7 text-lg text-green-600'><BiCheck/></p>
+            {isSeller && <p className='ml-7 text-lg text-green-600'><BiCheck/></p>}
         </> : " naiUser"} </p>
        
         </div>

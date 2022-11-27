@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
     const imagebbKey =process.env.REACT_APP_HoastinImagebbkey;
@@ -9,6 +10,7 @@ const AddProduct = () => {
     const {register, formState: { errors }, handleSubmit} = useForm()
   
         //    const [refres , setRefres] = useState('')
+        const navigate = useNavigate()
            
      const handlarAdProduct = (data)=>{
      
@@ -58,7 +60,7 @@ const AddProduct = () => {
                       if(data.acknowledged){
 
                           toast.success('Seller product database save')
-                          
+                          navigate('/deshboard/myProduct')
                       } 
                        
                 }) 
@@ -73,8 +75,8 @@ const AddProduct = () => {
     return (
      
        
-            <div className='h-[650px]  mt-7 flex  items-center'>
-            <div className='w-96 border border-blue-600  p-7'>
+            <div className='h-[650px]   mt-7 flex  items-center'>
+            <div className='w-96 bg-indigo-100    p-7'>
              <h2 className='text-2xl text-center'> Add Product</h2>
 
          <form onSubmit={handleSubmit(handlarAdProduct)}>

@@ -14,11 +14,13 @@ const ProductCard = ({product}) => {
       <p className='ml-7 font-bold'>  Resale Price: {resalePrice}Tk </p>
       <p className='ml-7  font-bold'> Original Price : {originalPrice} </p>
       <p className='ml-7 font-bold'> Youre : {year} </p>
-     
        </div>
      
       </div>
- 
+          <div className='flex mb-8 ml-3 '>
+          <button className="btn btn-sm btn-primary ">  Advertise </button>
+         
+          </div>
     </div>
   
  </div>

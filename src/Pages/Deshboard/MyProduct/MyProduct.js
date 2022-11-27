@@ -1,12 +1,10 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../contexts/AuthProvider';
-import SpennerPage from '../../Shared/SpennerPage/SpennerPage';
+import React, {  useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 
 const MyProduct = () => {
        
-        const {loding} = useContext(AuthContext)
+        
     const [products , setProducts]=useState([])
       
        useEffect(()=>{
