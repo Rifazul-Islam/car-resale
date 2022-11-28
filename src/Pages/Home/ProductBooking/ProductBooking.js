@@ -6,7 +6,7 @@ const ProductBooking = ({productAllData,cancalModal}) => {
      
     const {user} = useContext(AuthContext)
 
-    const {name:categorName,resalePrice, img} = productAllData
+    const {productName,resalePrice, img} = productAllData
           
    
     
@@ -27,7 +27,7 @@ const ProductBooking = ({productAllData,cancalModal}) => {
 
       const booking = {
            
-        categorName,
+        productName,
         price,
         name,
         email,
@@ -66,12 +66,12 @@ const ProductBooking = ({productAllData,cancalModal}) => {
      <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
      
          <form onSubmit={ handleSubmit} className='grid grid-cols-1 gap-3 mt-5'>
-         <input  name= 'categorName'  type="text" defaultValue={categorName} className="input input-bordered w-full " />
-         <input name='resalePrice'  type="text" defaultValue={resalePrice} className="input input-bordered w-full " />
-         <input name='name' type="text" defaultValue={user?.displayName} disabled readOnly placeholder="User Name" className="input input-bordered w-full " />
-         <input name='email'  type="text" defaultValue={user?.email} disabled readOnly placeholder="user Email" className="input input-bordered w-full " />
+         <input  name= 'categorName'  type="text" default value={productName} className="input input-bordered w-full " />
+         <input name='resalePrice'  type="text" default value={resalePrice} className="input input-bordered w-full " />
+         <input name='name' type="text" default value={user?.displayName} disabled readOnly placeholder="User Name" className="input input-bordered w-full " />
+         <input name='email'  type="text" default value={user?.email} disabled readOnly placeholder="user Email" className="input input-bordered w-full " />
          <input name='phone' type="text" placeholder=" your phone number" className="input input-bordered w-full " />
-         <input name='location' type="text" placeholder=" your Location" className="input input-bordered w-full " />
+         <input name='location' type="text" placeholder=" meeting Location" className="input input-bordered w-full " />
           
          <br/>
         

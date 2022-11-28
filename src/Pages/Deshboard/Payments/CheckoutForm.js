@@ -1,10 +1,31 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const CheckoutForm = ({bookingProduct}) => {
-    const [checkCardError, setCheckCardError] = useState('')
+    const [clientSecret, setClientSecret] = useState("");
+    const [processing, setProcessing] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
+
+    const {price,email,name, _id}= bookingProduct
+
+
+    useEffect(() => {
+     
+        fetch("http://localhost:5000/create-payment-intent", {
+          method: "POST",
+          headers: {
+             "content-type": "application/json",
+               
+               authorization:`bearer ${localStorage.getItem('accessTokens')}`
+            },
+          body: JSON.stringify({ price }),
+        })
+          .then((res) => res.json())
+          .then((data) => setClientSecret(data.clientSecret));
+      }, [price]);
+
 
     const handleSubmit = async (event) => {
 
@@ -26,16 +47,65 @@ const CheckoutForm = ({bookingProduct}) => {
           });
       
           if (error) {
+
+           toast.error(error.message)
+        }
+
+      
+        setProcessing(true)
+
+        const {paymentIntent, error:cardConfirmError} = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+              payment_method: {
+                card: card,
+                billing_details: {
+
+                 name:name,
+                   email:email
+                   
+                },
+              },
+            },
+          );    
+          
+          
+
+         
+
+          if(paymentIntent.status === "succeeded" ){
+            const payment = {
+
+                paymentIntent: paymentIntent.id,
+                bookingId :_id,
+                  email,
+                  price
+              }
+
+              fetch('http://localhost:5000/payments',{
+                
+                method:'POST',
+                headers:{
+                  
+                   'content-type':'application/json',
+                   authorization:`bearer ${localStorage.getItem('accessTokens')} `
+                },
+
+                body:JSON.stringify(payment)
+           })
+           .then(res => res.json())
+           .then(data =>{
+
+            if(data.acknowledged){
             
-              setCheckCardError(error.message)
-        
-        }
-
-        else{
-            setCheckCardError('')
-        }
-
-
+           toast.success('your payment Successfully')
+          
+            }
+           })
+           setProcessing(false)
+          }   
+          
+          
     }
     return (
         <div>
@@ -56,12 +126,12 @@ const CheckoutForm = ({bookingProduct}) => {
           },
         }}
       />
-      <button className='mt-9 btn btn-sm font-bold btn-primary' type="submit" disabled={!stripe}>
+      <button className='mt-9 btn btn-sm font-bold btn-primary' type="submit" disabled=
+      {!stripe || !clientSecret || processing  }>
         Pay
       </button>
     </form>
-
-          <p className='text-red-500'> {checkCardError}  </p>
+ 
     </div>
   );
 };

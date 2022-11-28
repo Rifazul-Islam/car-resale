@@ -22,11 +22,11 @@ const Categories = () => {
           return <SpennerPage></SpennerPage>
      }
 
-     console.log(categories)      
+    //  console.log(categories)      
     return (
-        <div className='mt-9'>
-            <h1 className='text-3xl text-center'> Choose your  Categories  </h1>
-             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '>
+        <div className='mt-9  p-9'>
+            <h1 className='text-3xl text-center text-indigo-400 mb-8'> Choose your  Category  </h1>
+             <div className='grid   grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '>
              {
                categories.map(product =><CategoriCard 
                 key={product._id}

@@ -17,7 +17,7 @@ const Payments = () => {
     return (
         <div className='  mt-20 h-[400px] ' >
                       <div className=' bg-slate-300 p-20' >
-                      <h1 className='text-3xl mb-7'>  payments page </h1>
+                      <h1 className='text-3xl mb-7'>  Payments page </h1>
                       <h1 className='text-2xl mb-3'> Product Name : {categorName} </h1>
                       <p> <strong> {price}TK</strong>  {location} </p>
 

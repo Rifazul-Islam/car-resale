@@ -2,17 +2,17 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-import { FaGoogle } from 'react-icons/fa';
+
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useToken from '../../CustomHook/useToken';
 
 const Signup = () => {
     const {register, formState: { errors }, handleSubmit} = useForm()
-    // const [loginError, setLoginError] = useState('')
+    
       
-    const {createUser,updateUserProfile,userGoogleLogin}=useContext(AuthContext)
-        
+    const {createUser,updateUserProfile}=useContext(AuthContext)
+       
     const [userEmail, setUserEmail] = useState('')
          const [token]=useToken(userEmail)
     
@@ -23,7 +23,7 @@ const Signup = () => {
          }
         
 
-
+        
     const hanlarSinup = (data)=>{
            
         createUser(data.email, data.password)
@@ -35,6 +35,8 @@ const Signup = () => {
              }
              updateUserProfile(userProfile)
              console.log(user)
+             
+       // SignUp page Create Jwt Token
 
                setUserEmail(data.email)
         })
@@ -42,10 +44,11 @@ const Signup = () => {
           console.error(error)
         })
              
-      const  user ={
+      const userInfo ={
           name:data.name,
           email:data.email,
-          role : data.select
+          role : data.select,
+          
         }
         
          fetch('http://localhost:5000/users',{
@@ -54,7 +57,7 @@ const Signup = () => {
           headers:{
               'content-type':'application/json'
           },
-        body:JSON.stringify(user)
+        body:JSON.stringify(userInfo)
          })
          .then(res => res.json() )
          .then(data => {
@@ -68,22 +71,6 @@ const Signup = () => {
       
       }
 
-      const handlarGoogleLoing = () =>{
-
-        userGoogleLogin()
-        .then(result => {
-          const user = result.user;
-          console.log(user)
-        })
-        .catch(error =>{ 
-              console.error(error)
-        })
-      }
-
-        
-
-
-      
     return (
         <div className='h-[650px] flex justify-center items-center'>
         <div className='w-96 border border-indigo-600  p-7'>
@@ -126,9 +113,8 @@ const Signup = () => {
               <span className="label-text text-1xl">Select</span>
               </label>
               <select type='text' {...register("select" ,{required:true} )} className="select select-bordered w-full max-w-xs">
-              <option>seller </option>
               <option>buyer</option>
-              
+              <option>seller </option>
            </select>
               
           </div>
@@ -139,7 +125,6 @@ const Signup = () => {
   
         <p className='mt-3 mb-5'> Already have an Accout <Link to='/login' className='text-green-500' > Login page</Link> </p>
 
-      <button onClick={handlarGoogleLoing} className='btn btn-outline w-full'> <FaGoogle className='mr-3' />   CONTINUE WITH GOOGLE</button>
   </div>  
   </div>
     );

@@ -28,6 +28,9 @@ const Login = () => {
            const user = result.user;
            console.log(user)
            toast.success('User Login Succussfully')
+
+           // Loin page Create Jwt Token
+
            setLoginUser(data.email)
           
         })
@@ -43,6 +46,40 @@ const Login = () => {
         .then(result => {
           const user = result.user;
           console.log(user)
+            // Google page Create Jwt Token
+          setLoginUser(user?.email)
+          if (user) {
+            const userInfo = {
+                name: user?.displayName,
+                email: user?.email,
+                role: 'buyer'
+            };
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userInfo)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        // setCreateUserEmail(user?.email);
+                        toast.success('Account Create successfull with save user')
+                        navigate(from, {replace:true});
+                    
+                      } else {
+                        // setCreateUserEmail(user?.email);
+                        toast.error(data.message)
+                        navigate(from, {replace:true});
+                    }
+                })
+                .catch(err => {
+                    console.error(err.message);
+                })
+
+        }
+
         })
         .catch(error =>{
               console.error(error)

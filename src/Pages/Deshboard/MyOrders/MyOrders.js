@@ -24,7 +24,7 @@ const MyOrders = () => {
      })
   
 
-          console.log(bookings)
+       
     return (
         <div>
 
@@ -53,10 +53,13 @@ const MyOrders = () => {
            </div>
            </div>
            </td>
-            <td>{booking.categorName}</td>
-            <td> {booking.price}TK </td>
-            <td> <button className="btn btn-sm btn-primary"> <Link to={`/deshboard/payments/${booking._id}`}>Pay </Link>   </button>
+            <td>{booking.productName}</td>
+            <td> ${booking.price} </td>
+            <td> 
             
+              {booking.price && !booking.paid && <Link to={`/deshboard/payments/${booking._id}`}> <button className='btn btn-sm btn-primary'> pay</button>  </Link> } 
+              {booking.price && booking.paid && <Link> <button className='btn btn-xs text-indigo-500'>paid</button>  </Link> } 
+
                </td>
            
           </tr>)

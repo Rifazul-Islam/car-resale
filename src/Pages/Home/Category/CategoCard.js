@@ -1,35 +1,26 @@
-import React, { useContext } from 'react';
-
-import { BiCheck } from "react-icons/bi";
-import { AuthContext } from '../../../contexts/AuthProvider';
-import useSeller from '../../../CustomHook/useSeller';
+import React from 'react';
 
 const CategoCard = ({secondhand,setProductAllData}) => {
    
-      const {user} = useContext(AuthContext)
-         const [isSeller]=useSeller(user?.email)
-    const {img,name,Locatin,resalePrice,originalPrice,years,} = secondhand
+   
+         const { img, productName,sellerName, resalePrice,originalPrice,postTime, location,years} = secondhand
 
 
     return (
         <div className='mb-5 mt-3'>
          <div className="card card-compact h-[400px]  bg-base-200 flex justify-between  shadow-xl">
-         <figure><img src={img} alt="Shoes" /></figure>
+         <figure><img className='mt-9' src={img} alt="Shoes" /></figure>
       <div className="card-body">
        <div className='grid justify-items-start '>
-       <p className='ml-7 font-bold'> Name : {name}</p>
-       <p className='ml-7 font-bold'> Location : {Locatin} </p>
-       <p className='ml-7 font-bold'>  Resale Price: {resalePrice}Tk </p>
-       <p className='ml-7  font-bold'> Original Price : {originalPrice} </p>
+       <p className='ml-7 font-bold'> SellerName: {sellerName}</p>
+       <p className='ml-7 font-bold'> ProductName : {productName}</p>
+       <p className='ml-7 font-bold'> Location : {location} </p>
+       <p className='ml-7 font-bold'>  Resale Price: ${resalePrice} </p>
+       <p className='ml-7  font-bold'> Original Price : ${originalPrice} </p>
        <p className='ml-7 font-bold'> Youre : {years} </p>
+       <p className='ml-7 font-bold'> PostTime : {postTime? postTime:'no time' } </p>
       
-        <div className=' '>
-        <p className='ml-7 font-bold flex justify-around' > Seller Name :  { user?.uid? <>{user?.displayName} 
-            {isSeller && <p className='ml-7 text-lg text-green-600'><BiCheck/></p>}
-        </> : " naiUser"} </p>
        
-        </div>
-      
        </div>
       
      </div>
@@ -37,8 +28,9 @@ const CategoCard = ({secondhand,setProductAllData}) => {
   
 
      <label
+     htmlFor="booking-modal"
         onClick={()=>setProductAllData(secondhand)}
-       htmlFor="booking-modal"
+       
         className="btn btn-success btn-sm ">Booking Now
         </label>
      </div>

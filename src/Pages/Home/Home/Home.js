@@ -6,15 +6,21 @@ import HomeBennar from '../HomeBennar/HomeBennar';
 
 
 
+
 const Home = () => {
+
+    //   const productsItems = useLoaderData()
+         
+    
     return (
         <div className='mx-5'>
             
              <HomeBennar></HomeBennar>
+              
              <Categories></Categories>
              <ExtraSection></ExtraSection>
 
-           
+                  
         </div>
     );
 };
