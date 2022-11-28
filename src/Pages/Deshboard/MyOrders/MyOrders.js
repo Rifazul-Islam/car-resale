@@ -6,24 +6,30 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyOrders = () => {
   
-    const {user}=useContext(AuthContext)
+    const {user,loding}=useContext(AuthContext)
   
   
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const url = `https://car-resale-server-ten.vercel.app/bookings?email=${user?.email}`
 
-    const {data:bookings = [] } = useQuery({
+    const {data:bookings = [] ,refetch } = useQuery({
   
          queryKey :['bookings', user?.email],
          queryFn: async ()=> {
           const res = await fetch(url ,{
-              
+            headers:{
+              authorization : `bearer ${localStorage.getItem('accessToken')}`
+            }
           });
           const data = await res.json() ;
           return  data ;
+         
+       
          }
+
+       
      })
   
-
+    
        
     return (
         <div>
@@ -43,8 +49,8 @@ const MyOrders = () => {
     </thead>
     <tbody>
      
-     {
-           bookings.map((booking,i) =>  <tr key={booking._id} >
+     {  bookings?.length > 0 &&
+           bookings?.map((booking,i) =>  <tr key={booking._id} >
             <th> {i+1} </th>
             <td>
             <div className="avatar">
@@ -58,7 +64,7 @@ const MyOrders = () => {
             <td> 
             
               {booking.price && !booking.paid && <Link to={`/deshboard/payments/${booking._id}`}> <button className='btn btn-sm btn-primary'> pay</button>  </Link> } 
-              {booking.price && booking.paid && <Link> <button className='btn btn-xs text-indigo-500'>paid</button>  </Link> } 
+              {booking.price && booking.paid && <Link> <button className='btn btn-xs text-green-500'>paid</button>  </Link> } 
 
                </td>
            

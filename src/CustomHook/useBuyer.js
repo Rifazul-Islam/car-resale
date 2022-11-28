@@ -9,7 +9,7 @@ const useBuyer = email =>{
 
         if(email){
 
-           fetch(`http://localhost:5000/users/buyer/${email}`)
+           fetch(`https://car-resale-server-ten.vercel.app/users/buyer/${email}`)
            .then(res => res.json())
            .then(data => {
                 

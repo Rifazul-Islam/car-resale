@@ -24,14 +24,14 @@ export const router = createBrowserRouter([
      children:[ 
         {path:'/', element:<Home></Home> },
         {path:'/home/:id', element:<Home></Home> ,
-        loader:({params})=> fetch(`http://localhost:5000/sellerProducts/${params.id}`)
+        loader:({params})=> fetch(`https://car-resale-server-ten.vercel.app/sellerProducts/${params.id}`)
       },
           
         {path:'/login', element:<Login></Login>},
         {path:'/signup', element:<Signup></Signup>},
 
-        {path:'/category/:id', element:<PrivateRouter><Category></Category> </PrivateRouter>  ,
-        loader:({params})=> fetch(`http://localhost:5000/categories/${params.id}`)
+        {path:'/category/:id', element:<Category></Category>   ,
+        loader:({params})=> fetch(`https://car-resale-server-ten.vercel.app/categories/${params.id}`)
      
       },
 
@@ -41,19 +41,19 @@ export const router = createBrowserRouter([
 
      ] },
 
-     {path:'/deshboard', element:<PrivateRouter> <DeshboardLayout></DeshboardLayout></PrivateRouter>, children:[
+     {path:'/deshboard', element: <DeshboardLayout></DeshboardLayout>, children:[
 
-     {path:'/deshboard/myOrders', element: <PrivateRouter><MyOrders> </MyOrders> </PrivateRouter> },
-     {path:'/deshboard/addProduct', element:<PrivateRouter> <AddProduct></AddProduct>  </PrivateRouter>   },
-     {path:'/deshboard/myProduct', element: <PrivateRouter> <MyProduct></MyProduct>   </PrivateRouter>   },
-     {path:'/deshboard/allSeller', element: <PrivateRouter> <AllSeller></AllSeller> </PrivateRouter>   },
-     {path:'/deshboard/allBuyer', element: <PrivateRouter>  <AllBuyer></AllBuyer> </PrivateRouter>   },
-     {path:'/deshboard/reportedItem', element: <PrivateRouter> <ReportedItem></ReportedItem>   </PrivateRouter>   },
+     {path:'/deshboard/myOrders', element: <MyOrders> </MyOrders>  },
+     {path:'/deshboard/addProduct', element:<AddProduct></AddProduct>     },
+     {path:'/deshboard/myProduct', element: <MyProduct></MyProduct>   },
+     {path:'/deshboard/allSeller', element:  <AllSeller></AllSeller>   },
+     {path:'/deshboard/allBuyer', element:   <AllBuyer></AllBuyer>   },
+     {path:'/deshboard/reportedItem', element:  <ReportedItem></ReportedItem>   },
      
       
      {path:'/deshboard/payments/:id', element: <PrivateRouter> <Payments></Payments> </PrivateRouter> ,
      
-     loader:({params})=> fetch(`http://localhost:5000/bookings/${params.id}`)  
+     loader:({params})=> fetch(`https://car-resale-server-ten.vercel.app/bookings/${params.id}`)  
     }
     ] }
 ])

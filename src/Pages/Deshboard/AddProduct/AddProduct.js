@@ -53,7 +53,7 @@ const AddProduct = () => {
           
 
 
-            fetch('http://localhost:5000/sellerProducts',{
+            fetch('https://car-resale-server-ten.vercel.app/sellerProducts',{
     
                method:'POST',
     

@@ -9,7 +9,10 @@ const AllBuyer = () => {
         queryKey:['buyers'],
         queryFn:async()=>{
 
-            const res = await fetch('http://localhost:5000/buyers')
+            const res = await fetch('https://car-resale-server-ten.vercel.app/buyers',{
+
+             
+            })
             const data = await res.json()
             return data ;
         }
@@ -18,7 +21,7 @@ const AllBuyer = () => {
 
      const buyerDelete=id =>{
 
-        fetch(`http://localhost:5000/users/${id}`,{
+        fetch(`https://car-resale-server-ten.vercel.app/buyers/${id}`,{
             method:'DELETE',
          })
          .then(res => res.json())
@@ -52,8 +55,9 @@ const AllBuyer = () => {
     </thead>
     <tbody>
      
-     {   buyers &&
-           buyers.map((buyer,i) =>  <tr key={buyer._id} >
+     { 
+     buyers?.length  &&
+           buyers?.map((buyer,i) =>  <tr key={buyer._id} >
             <th> {i+1} </th>
             <td>{buyer.name} </td>
             <td>{buyer.email}</td>

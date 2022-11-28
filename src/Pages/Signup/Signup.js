@@ -11,7 +11,7 @@ const Signup = () => {
     const {register, formState: { errors }, handleSubmit} = useForm()
     
       
-    const {createUser,updateUserProfile}=useContext(AuthContext)
+    const {createUser,updateUserProfile, setLoding}=useContext(AuthContext)
        
     const [userEmail, setUserEmail] = useState('')
          const [token]=useToken(userEmail)
@@ -30,11 +30,17 @@ const Signup = () => {
         .then((result)=>{
              const user = result.user;
              toast.success('Create User Succussfully')
+             
              const userProfile = {
               displayName:data.name
+
+              
              }
              updateUserProfile(userProfile)
+
              console.log(user)
+
+             
              
        // SignUp page Create Jwt Token
 
@@ -51,7 +57,7 @@ const Signup = () => {
           
         }
         
-         fetch('http://localhost:5000/users',{
+         fetch('https://car-resale-server-ten.vercel.app/users',{
 
           method: 'POST',
           headers:{
@@ -65,6 +71,7 @@ const Signup = () => {
             if(data.acknowledged){
 
                 toast.success('user Info database Save')
+
             }
              
          })
@@ -103,7 +110,7 @@ const Signup = () => {
         <span className="label-password text-1xl">Password   </span>
         </label>
         <input type="password" {...register("password" , {required:"your password not valid", minLength:{value:6, message:"Pleas six digit give"  },
-        //   pattern:{value:/[A-Za-z]+$/, message:'you one capital and one small letter and specal key'}
+      
       } )} className="input input-bordered w-full max-w-xs" />
          {errors.password && <p className='text-red-600' > {errors.password.message} </p>}
         
@@ -123,7 +130,7 @@ const Signup = () => {
         <input type="submit" className='btn w-full border-none hover:text-gray-100 bg-gradient-to-r from-emerald-500 to-indigo-500 text-white my-3' value="Sign up" />
         </form>
   
-        <p className='mt-3 mb-5'> Already have an Accout <Link to='/login' className='text-green-500' > Login page</Link> </p>
+        <p className='mt-3 mb-5'> Already have an Accout <Link to='/login' className='text-green-500'> Login page</Link> </p>
 
   </div>  
   </div>

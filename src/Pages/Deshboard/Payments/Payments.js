@@ -8,7 +8,7 @@ const Payments = () => {
    
      const bookingProduct = useLoaderData()
        
-           const {categorName,price,location}=bookingProduct
+           const {productName,price,location}=bookingProduct
          
                               
           const stripePromise = loadStripe(process.env.REACT_APP_StripePublibleKey);
@@ -17,9 +17,9 @@ const Payments = () => {
     return (
         <div className='  mt-20 h-[400px] ' >
                       <div className=' bg-slate-300 p-20' >
-                      <h1 className='text-3xl mb-7'>  Payments page </h1>
-                      <h1 className='text-2xl mb-3'> Product Name : {categorName} </h1>
-                      <p> <strong> {price}TK</strong>  {location} </p>
+                      <h1 className='text-3xl mb-7 text-green-500'>  Payments page </h1>
+                      <h1 className='text-2xl mb-3'> Product Name : {productName} </h1>
+                      <p> <strong>${price}</strong> {location} </p>
 
 
                       <div className='w-96 mt-7 bg-slate-600 h-36 p-5 text-white'>

@@ -8,7 +8,7 @@ import useToken from '../../CustomHook/useToken';
 
 const Login = () => {
     const {register, formState: { errors }, handleSubmit} = useForm()
-    // const [loginError, setLoginError] = useState('')
+
         const [loginUser, setLoginUser]=useState('')
 
        const [token]=useToken(loginUser)
@@ -54,7 +54,7 @@ const Login = () => {
                 email: user?.email,
                 role: 'buyer'
             };
-            fetch('http://localhost:5000/users', {
+            fetch('https://car-resale-server-ten.vercel.app/users', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
