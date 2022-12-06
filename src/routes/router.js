@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
         {path:'/login', element:<Login></Login>},
         {path:'/signup', element:<Signup></Signup>},
 
-        {path:'/category/:id', element:<Category></Category>   ,
+        {path:'/category/:id', element:<Category></Category>  ,
         loader:({params})=> fetch(`https://car-resale-server-ten.vercel.app/categories/${params.id}`)
      
       },
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
      {path:'/deshboard/reportedItem', element:  <ReportedItem></ReportedItem>   },
      
       
-     {path:'/deshboard/payments/:id', element: <PrivateRouter> <Payments></Payments> </PrivateRouter> ,
+     {path:'/deshboard/payments/:id', element:  <Payments></Payments>  ,
      
      loader:({params})=> fetch(`https://car-resale-server-ten.vercel.app/bookings/${params.id}`)  
     }

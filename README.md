@@ -2,7 +2,8 @@
 
 # Website Name Cars Resale
  ## Webwite live and netlify link : (https://car-resale-49076.web.app/) 
- 
+  # Admin Email : rifazul@gmail.com
+  # password : 778899
  #  Website description : 
   * first create react app instal and react router 
   * firebase new create new projects and database  mongodb use 
@@ -10,6 +11,8 @@
   * desgin hot Toast and react icon
   * server site use env file and jwt token   vercel 
   *  Features : Actually this site is  resale car related system is used.
+
+  
 
 
 

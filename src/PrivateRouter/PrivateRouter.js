@@ -4,12 +4,12 @@ import { AuthContext } from '../contexts/AuthProvider';
 import SpennerPage from '../Pages/Shared/SpennerPage/SpennerPage';
 
 const PrivateRouter = ({children}) => {
-    const {user , setLoding, loding} = useContext(AuthContext)
+    const {user ,  loding} = useContext(AuthContext)
     const location = useLocation()
       
     if(loding){
 
-           return <div> <SpennerPage/></div>
+           return <div><SpennerPage/> </div>
     }
    
 
