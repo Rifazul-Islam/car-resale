@@ -5,8 +5,6 @@ import HomeBennar from '../HomeBennar/HomeBennar';
 
 
 
-
-
 const Home = () => {
 
     //   const productsItems = useLoaderData()

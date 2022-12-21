@@ -4,7 +4,7 @@ const Blog = () => {
     return (
         
     <div className='m-5'>
-      <div className="card card-side bg-indigo-300 w-full shadow-xl">
+      <div className="card card-side bg-indigo-300 w-full  shadow-xl">
       <div className="card-body">
       <div className=' grid justify-items-start'>
       <h2 className=" font-bold mt-2 text-xl text-justify "> 1 . What are the different ways to manage a state in a React application?</h2>
@@ -20,7 +20,7 @@ const Blog = () => {
   <div className="card card-side bg-indigo-300 mt-5 w-full shadow-xl">
       <div className="card-body">
       <div className=' grid justify-items-start'>
-      <h2 className=" font-bold mt-2 text-xl text-justify "> 2 . How does prototypical inheritance work?</h2>
+      <h2 className=" font-bold mt-2 text-xl text-justify "> 2 .How does prototypical inheritance work?</h2>
       <h2 className=" font-bold mt-2 text-xl text-justify ">Every object with its methods and properties contains an internal and hidden property known as Prototype. The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object
      can inherit the properties and methods of another object. .</h2>
       </div>
@@ -29,7 +29,7 @@ const Blog = () => {
 
 
 
-  <div className="card card-side bg-indigo-300 mt-5 w-full shadow-xl">
+  <div className="card card-side bg-indigo-300  mt-5 w-full shadow-xl">
       <div className="card-body">
       <div className=' font-bold mt-2 text-xl text-justify'>
       <h2 className=" text-2xl grid justify-start "> 3 . What is a unit test? Why should we write unit tests?</h2>
@@ -41,7 +41,7 @@ const Blog = () => {
   </div>
 
 
-  <div className="card card-side bg-indigo-300 mt-5 w-full shadow-xl">
+  <div className="card card-side  bg-indigo-300 mt-5 w-full shadow-xl">
       <div className="card-body">
       <div className=' grid justify-items-start'>
       <h2 className=" font-bold mt-2 text-xl text-justify "> 4 .  React vs. Angular vs. Vue?</h2>
